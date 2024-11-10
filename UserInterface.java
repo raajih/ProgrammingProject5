@@ -63,6 +63,20 @@ public class UserInterface
                     tree.print();
                     break;
 
+                    case 3://Add user's number to a tree.
+                    System.out.print("Enter number to be added: ");
+                    int addNum = scnr.nextInt();
+                    scnr.nextLine();
+                    tree.add(addNum);
+                    break;
+
+                    case 4://Remove user's number from tree.
+                    System.out.print("Enter number to be removed: ");
+                    int remNum = scnr.nextInt();
+                    scnr.nextLine();
+                    tree.remove(remNum);
+                    break;
+                    
                     default: 
                     System.out.print("Invalid choice, please try again.");
 
