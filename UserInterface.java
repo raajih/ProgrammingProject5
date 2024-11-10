@@ -2,7 +2,10 @@
 //ProgrammingProject5
 //Used to output the menu and get user's choice.
 import java.util.Scanner;
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.util.Iterator;
 
 public class UserInterface 
 {
@@ -102,6 +105,13 @@ public class UserInterface
                     break;
 
                     case 9:
+                    if (tree.getRoot() == null) {
+                        System.out.println("Tree is empty.");
+                        break;
+                    }
+                    System.out.print("Enter the filename to export the tree: ");
+                    String exportFileName = scnr.nextLine();
+                    exportToFile(exportFileName, tree);
                     break;
                     default: 
                     System.out.print("Invalid choice, please try again.");
@@ -111,6 +121,20 @@ public class UserInterface
 
         
 
+    }
+
+    // Method to export tree data to a file
+    public void exportToFile(String filename, EnhancedBST tree) 
+    {
+        try (PrintWriter writer = new PrintWriter(new File(filename))) {
+            Iterator<Integer> iterator = tree.iterator();
+            while (iterator.hasNext()) {
+                writer.println(iterator.next());
+            }
+            System.out.println("Tree data has been exported to " + filename);
+        } catch (FileNotFoundException e) {
+            System.out.println("Error writing to file.");
+        }
     }
 
     public static void main(String[] args) throws FileNotFoundException{

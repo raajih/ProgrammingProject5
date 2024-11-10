@@ -1,8 +1,13 @@
 //Raajih Roland
 //ProgrammingProject5
+import java.util.NoSuchElementException;
 import java.util.Scanner;
+import java.util.Stack;
+import javax.swing.tree.TreeNode;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.Iterator;
+import java.util.Stack;
 
 public class EnhancedBST extends BinarySearchTree {
     /**
@@ -201,7 +206,8 @@ public class EnhancedBST extends BinarySearchTree {
         currentSum += (int) parent.data;
 
         // Check if we've reached a leaf node (both left and right are null)
-        if (parent.left == null && parent.right == null) {
+        if (parent.left == null && parent.right == null) 
+        {
             // If we are at a leaf, check if the sum matches the target
             return currentSum == targetSum;
         }
@@ -212,6 +218,55 @@ public class EnhancedBST extends BinarySearchTree {
 
         //Return true if either left or right subtree has a valid path sum.
         return leftHasPath || rightHasPath;
+    }
+
+     //Return an iterator for the tree.
+    public Iterator<Integer> iterator() 
+    {
+        return new TreeIterator();
+    }
+    
+    //Implements Iterator.
+    public class TreeIterator implements Iterator<Integer> 
+    {
+        private Stack<Node> stack;
+        
+        public TreeIterator() {
+            stack = new Stack<>();
+            if (getRoot() != null) {
+                stack.push(getRoot());
+            }
+        }
+
+       
+
+        @Override
+        public boolean hasNext() {
+            return !stack.isEmpty();
+        }
+
+        @Override
+        public Integer next() 
+        {
+            if (!hasNext()) 
+            {
+                throw new NoSuchElementException("No more elements in the tree.");
+            }
+            // Pop the node from the stack.
+            Node node = stack.pop();
+
+            // Push right child first so that left child is done first.
+            if (node.right != null) 
+            {
+            stack.push(node.right);
+            }
+            if (node.left != null) 
+            {
+            stack.push(node.left);
+            }
+
+                return (int) node.data;
+        }
     }
 
     
