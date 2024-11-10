@@ -88,6 +88,21 @@ public class UserInterface
                     case 7://Find number of absent children.
                     System.out.print("Number of absent children: " + tree.absentChildren());
                     break;
+
+                    case 8://See if user's input is a valid path sum.
+                    int targetSum;
+                    System.out.print("Enter path sum you would like to test: ");
+                    targetSum = scnr.nextInt();
+                    scnr.nextLine();
+
+                    if (tree.hasPathSum(targetSum))
+                        System.out.print(targetSum + " is a valid path sum.");
+                    else
+                        System.out.print(targetSum + " is not a valid path sum.");
+                    break;
+
+                    case 9:
+                    break;
                     default: 
                     System.out.print("Invalid choice, please try again.");
 

@@ -174,7 +174,45 @@ public class EnhancedBST extends BinarySearchTree {
         return absentCount;
 
     }
+
+    /**
+     * Test to see if user's input is a valid path sum.
+     * @param targetSum target to compare path sums to.
+     * @return true if targetSum is a valid pathSum, false if not.
+     */
+    public boolean hasPathSum(int targetSum)
+    {
+        return hasPathSum(getRoot(), targetSum, 0);
+    }
     
+    /**
+     * Helper to test to see if user's input is a valid path sum.
+     * @param parent current node.
+     * @param targetSum target to compare path sums to.
+     * @param currentSum current sum of path.
+     * @return true if targetSum is a valid pathSum, false if not.
+     */
+    public boolean hasPathSum(Node parent, int targetSum, int currentSum) {
+        if (parent == null) {
+            return false; // If the node is null, no path exists
+        }
+
+        // Add the current node's data to the running sum
+        currentSum += (int) parent.data;
+
+        // Check if we've reached a leaf node (both left and right are null)
+        if (parent.left == null && parent.right == null) {
+            // If we are at a leaf, check if the sum matches the target
+            return currentSum == targetSum;
+        }
+
+        //Check the left and right subtrees
+        boolean leftHasPath = hasPathSum(parent.left, targetSum, currentSum);
+        boolean rightHasPath = hasPathSum(parent.right, targetSum, currentSum);
+
+        //Return true if either left or right subtree has a valid path sum.
+        return leftHasPath || rightHasPath;
+    }
 
     
 
