@@ -23,7 +23,7 @@ public class UserInterface
         EnhancedBST tree = new EnhancedBST();//Create EnhancedBST object.
 
         do {
-                System.out.println("Welcome to Enhanced BST Tester.\n");
+                System.out.println("\nWelcome to Enhanced BST Tester.\n");
 
                 //Output menu options
                 System.out.println("Here's the menu of choices - \n");

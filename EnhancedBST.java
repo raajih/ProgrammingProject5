@@ -60,6 +60,28 @@ public class EnhancedBST extends BinarySearchTree {
     }
 
     /**
+     * Prints the tree in postorder.
+     */
+    public void postorderPrint()
+    {
+        postorderPrint(this.getRoot());
+    }
+
+    /**
+     * Helper method to print tree in postorder.
+     * @param parent current node.
+     */
+    public void postorderPrint(Node parent)
+    {
+        if (parent == null)
+            return;
+        postorderPrint(parent.left);
+        postorderPrint(parent.right);
+
+        System.out.print(parent.data + " ");
+    }
+
+    /**
      * @Override
      */
     public void print()
@@ -68,6 +90,8 @@ public class EnhancedBST extends BinarySearchTree {
         super.print();//Call superclass' print method for the inorder search.
         System.out.print("Preorder: ");//Output tree in preorder.
         preorderPrint();
+        System.out.print("\nPostorder: ");//Output tree in postorder.
+        postorderPrint();
     }
     
 
