@@ -93,6 +93,28 @@ public class EnhancedBST extends BinarySearchTree {
         System.out.print("\nPostorder: ");//Output tree in postorder.
         postorderPrint();
     }
+
+    /**
+     * Finds height of tree.
+     */
+    public int height()
+    {
+        return height(getRoot());
+    }
+
+    /**
+     * Helper method to find height of tree.
+     * @param parent
+     */
+    public int height(Node parent)
+    {
+        if (parent == null)//Base case.
+            return 0;
+        else
+        {
+            return 1 + Math.max(height(parent.left), height(parent.right));
+        }
+    }
     
 
     

@@ -76,6 +76,11 @@ public class UserInterface
                     scnr.nextLine();
                     tree.remove(remNum);
                     break;
+
+                    case 5://Find height
+                    System.out.print("Height: " + tree.height());
+                    break;
+
                     
                     default: 
                     System.out.print("Invalid choice, please try again.");
