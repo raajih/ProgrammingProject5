@@ -77,10 +77,13 @@ public class UserInterface
                     tree.remove(remNum);
                     break;
 
-                    case 5://Find height
+                    case 5://Find height.
                     System.out.print("Height: " + tree.height());
                     break;
 
+                    case 6://Find internal path length.
+                    System.out.print("Internal path length: " + tree.internalPath());
+                    break;
                     
                     default: 
                     System.out.print("Invalid choice, please try again.");

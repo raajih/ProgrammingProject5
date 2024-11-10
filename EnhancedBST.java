@@ -115,6 +115,32 @@ public class EnhancedBST extends BinarySearchTree {
             return 1 + Math.max(height(parent.left), height(parent.right));
         }
     }
+
+    /**
+     * Finds the internal path length.
+     * @return internal path length.
+     */
+    public int internalPath()
+    {
+        return internalPath(getRoot(), 0);
+    }
+
+    /**
+     * Helper method to find internal path length.
+     * @param parent parent node.
+     * @param level current level.
+     * @return the length of internal path from current node.
+     */
+    public int internalPath(Node parent, int level)
+    {
+        if (parent == null)//Base case.
+            return 0;
+
+        int leftPath = internalPath(parent.left, level + 1);
+        int rightPath = internalPath(parent.right, level + 1);
+
+        return leftPath + rightPath + level;
+    }
     
 
     
