@@ -84,7 +84,10 @@ public class UserInterface
                     case 6://Find internal path length.
                     System.out.print("Internal path length: " + tree.internalPath());
                     break;
-                    
+
+                    case 7://Find number of absent children.
+                    System.out.print("Number of absent children: " + tree.absentChildren());
+                    break;
                     default: 
                     System.out.print("Invalid choice, please try again.");
 

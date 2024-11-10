@@ -141,6 +141,39 @@ public class EnhancedBST extends BinarySearchTree {
 
         return leftPath + rightPath + level;
     }
+
+    /**
+     * Finds number of absent children.
+     * @return number of absent children.
+     */
+    public int absentChildren ()
+    {
+        return absentChildren(getRoot());
+    }
+
+    /**
+     * Recursive helper method to find number of absent children.
+     * @param parent current node to find absent children for.
+     * @return number of absent children for current node.
+     */
+    public int absentChildren(Node parent)
+    {
+        int absentCount = 0;
+        if(parent == null)
+            return 0;
+
+        if(parent.left == null)
+            absentCount++;
+
+        if(parent.right == null)
+            absentCount++;
+
+        absentCount = absentCount + absentChildren(parent.left);
+        absentCount = absentCount + absentChildren(parent.right);
+
+        return absentCount;
+
+    }
     
 
     
